@@ -202,7 +202,7 @@ example.com.         CAA  0 iodef "mailto:security@example.com"
 
 Recent npm incidents are why this has its own category. In September 2025 a phished maintainer shipped a browser crypto-wallet drainer in chalk, debug and related packages, live for about 2 hours. The same month the Shai-Hulud worm compromised 500+ packages per CISA, stole GitHub and cloud tokens and republished itself. A second wave followed in November 2025 (package counts conflict between sources).
 
-- Commit the lockfile. Install with `npm ci` or `pnpm install --frozen-lockfile` in CI.
+- Commit the lockfile. In CI, install strictly from the lockfile (npm's clean-install command, or pnpm with the frozen-lockfile flag).
 - Turn off install scripts with `ignore-scripts=true` in `.npmrc` (pnpm 10+ blocks dependency postinstall by default).
 - Add a cooldown before adopting new releases: pnpm `minimumReleaseAge` (minutes, for example 10080 for a week).
 - Pin GitHub Actions to commit SHAs. Use FIDO/passkey 2FA on npm and GitHub. Don't keep long-lived tokens in dotfiles.
@@ -336,7 +336,7 @@ After each real assessment, add an anonymised row to the failure-modes table: th
 | Contact or signup form with no bot check | Turnstile plus rate limit; fixed recipient address |
 | SMS OTP with no send caps | Per-number, prefix, IP and global caps; block unserved countries |
 | Third-party script with no owner, SRI or CSP entry | Inventory, self-host or SRI; lock GTM publish rights |
-| Lockfile not enforced, install scripts on | `npm ci`, `ignore-scripts=true`, release cooldown |
+| Lockfile not enforced, install scripts on | Lockfile-only installs, `ignore-scripts=true`, release cooldown |
 | Framework behind the latest patch of its line | Upgrade; check advisories |
 | DMARC missing or `p=none` | SPF, DKIM, DMARC moving to `p=reject`; CAA |
 | CNAME to a deleted resource | Delete the record; inventory DNS |

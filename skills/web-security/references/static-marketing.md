@@ -47,7 +47,7 @@ There is little server-side state, so the attacker goes for:
 
 9. CSP in enforce mode with nonces or hashes (no `unsafe-inline` or `unsafe-eval`) plus `report-to`. See the Next.js static caveat in SKILL.md. Verify: read the header; load the page with DevTools and confirm no violations from first-party code.
 10. SRI on external scripts and styles that can't be self-hosted. Verify: `integrity=` present.
-11. Lock npm: lockfile committed, `npm ci` in CI, a cooldown before new releases, 2FA on npm and GitHub, no long-lived publish tokens. Verify: repo review.
+11. Lock npm: lockfile committed, lockfile-only installs in CI, a cooldown before new releases, 2FA on npm and GitHub, no long-lived publish tokens. Verify: repo review.
 12. Disable `*.workers.dev` and preview URLs for production Workers; protect preview deployments on other hosts (vendor specifics unverified, check current docs). Verify: request `https://<worker>.<account>.workers.dev` and any `*-git-*.vercel.app` pattern; expect disabled or gated.
 13. Edge rate limit on any API route, form or server action. Verify: about 20 controlled requests; expect 429 or a challenge.
 14. CAA, SPF, DKIM and DMARC (`p=reject` as the goal; `p=quarantine` only as a staging step) so the domain can't be spoofed. Verify: `dig CAA`, `dig TXT _dmarc`.
