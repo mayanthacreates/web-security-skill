@@ -77,7 +77,7 @@ Before you review or build any endpoint, page or feature, answer these four ques
 
 ### 2. What can they do with it?
 
-Read, write, delete, spend money, send messages (email or SMS cost money and reputation), trigger a server-side fetch (SSRF), or run code. Each step up that list raises the bar.
+Read, write, delete, spend money, send messages (email or SMS cost money and reputation), make the server request a URL for them (SSRF), or take over the server. Each step up that list raises the bar.
 
 ### 3. What is the blast radius?
 
@@ -221,7 +221,7 @@ Recent npm incidents are why this has its own category. In September 2025 a phis
 Treat the model as an untrusted user that holds whatever you give it.
 - **LLM01 Prompt injection** (direct, and indirect through pages or files the bot reads): mitigations reduce it but can't prevent it. Constrain the role, validate output formats in deterministic code, and label untrusted content.
 - **LLM02/LLM07 Data leakage and system prompt leakage:** assume the system prompt can be extracted. Keep secrets and other users' data out of it and out of the context.
-- **LLM06 Excessive agency:** give it few, narrow tools (no open shell or open URL fetch), run them as the user, require human approval for high-impact actions, and enforce authorization in the downstream system rather than trusting the model to decide.
+- **LLM06 Excessive agency:** give it few, narrow tools (no open shell and no unrestricted URL access), run them as the user, require human approval for high-impact actions, and enforce authorization in the downstream system rather than trusting the model to decide.
 - **LLM10 Unbounded consumption ("denial of wallet"):** cap input size, rate limit and set quotas per source, set timeouts, and alert on anomalies. Also set a max output tokens value and a daily spend cap, and put Turnstile in front of anonymous chat. These last three are sound practice but not stated by OWASP.
 - **Disclosure:** EU AI Act Art 50 requires telling people they are talking to an AI at or before the first interaction. See [privacy-consent-compliance.md](references/privacy-consent-compliance.md).
 

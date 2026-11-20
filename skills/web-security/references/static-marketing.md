@@ -65,7 +65,7 @@ There is little server-side state, so the attacker goes for:
 
 - **Cloudflare Workers/Pages:** `*.workers.dev` and `*.pages.dev` serve the same app without your zone's WAF rules. Image resizing via `/cdn-cgi/image` needs a zone, so preview URLs can look broken. Headers must be set per path (`_headers`) or in Worker code; HTML routes and static assets are configured separately.
 - **Next.js on any host:** RSC turns static-looking apps into servers. If you believe the site is static, confirm no Server Function endpoint is reachable.
-- **Tag managers:** a compromised GTM container bypasses code review and can fetch code from allowlisted domains (see the Stripe/GTM skimmer in ecommerce.md). Audit GTM tags, not just `<script>` tags.
+- **Tag managers:** a compromised GTM container bypasses code review and can load scripts from allowlisted domains (see the Stripe/GTM skimmer in ecommerce.md). Audit GTM tags, not just `<script>` tags.
 - **Edge form handlers:** the Turnstile secret lives in a Worker secret, never in the bundle. Check `hostname` and `action` in the siteverify response.
 
 ## Sources
