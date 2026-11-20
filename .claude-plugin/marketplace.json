@@ -1,0 +1,14 @@
+{
+  "name": "mayanthacreates-security",
+  "description": "Security skills for AI agents",
+  "owner": {
+    "name": "mayanthacreates"
+  },
+  "plugins": [
+    {
+      "name": "web-security",
+      "source": "./",
+      "description": "Web security playbooks for building, reviewing and hardening any website, plus privacy and cookie consent compliance."
+    }
+  ]
+}

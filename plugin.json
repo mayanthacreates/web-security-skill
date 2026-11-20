@@ -1,0 +1,41 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "web-security",
+  "version": "1.0.0",
+  "description": "Web security playbooks for building, reviewing and hardening any website, plus privacy and cookie consent compliance.",
+  "author": {
+    "name": "mayanthacreates",
+    "url": "https://github.com/mayanthacreates"
+  },
+  "homepage": "https://github.com/mayanthacreates/web-security-skill",
+  "repository": "https://github.com/mayanthacreates/web-security-skill",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "web-security",
+    "owasp",
+    "csp",
+    "pentest",
+    "hardening",
+    "gdpr",
+    "cookie-consent",
+    "agent-skills"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Web Security",
+        "shortDescription": "Security reviews and hardening for any website, with proof for every finding.",
+        "longDescription": "Reviews, hardens and black-box assesses websites by type: static and marketing sites, WordPress, e-commerce, SaaS, marketplaces, fintech, healthcare and booking, and APIs. Covers security headers and CSP, login rate limits, auth and sessions, access control, secrets, bots, DNS and email spoofing, npm supply chain and AI chatbot risks, plus cookie consent, GDPR and CCPA checks. Every finding comes with proof, a fix and the reason, and the black-box method stays non-destructive.",
+        "developerName": "mayanthacreates",
+        "category": "Productivity",
+        "websiteURL": "https://github.com/mayanthacreates/web-security-skill",
+        "defaultPrompt": "Review my website's security and give me a findings table with proof and fixes, most severe first.",
+        "brandColor": "#C2410C",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png",
+        "privacyPolicyURL": "https://github.com/mayanthacreates/web-security-skill/blob/main/PRIVACY.md"
+      }
+    }
+  }
+}

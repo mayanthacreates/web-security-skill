@@ -1,0 +1,20 @@
+{
+  "name": "mayanthacreates-security",
+  "interface": {
+    "displayName": "Security skills by mayanthacreates"
+  },
+  "plugins": [
+    {
+      "name": "web-security",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

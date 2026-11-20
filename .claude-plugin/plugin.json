@@ -1,0 +1,27 @@
+{
+  "name": "web-security",
+  "description": "Web security playbooks for building, reviewing and hardening any website, plus privacy and cookie consent compliance.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mayanthacreates"
+  },
+  "repository": "https://github.com/mayanthacreates/web-security-skill",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "web-security",
+    "owasp",
+    "csp",
+    "pentest",
+    "hardening",
+    "gdpr",
+    "cookie-consent",
+    "agent-skills"
+  ],
+  "displayName": "Web Security",
+  "homepage": "https://github.com/mayanthacreates/web-security-skill",
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/mayanthacreates/web-security-skill#readme",
+  "supportUrl": "https://github.com/mayanthacreates/web-security-skill/issues",
+  "privacyPolicyUrl": "https://github.com/mayanthacreates/web-security-skill/blob/main/PRIVACY.md"
+}
