@@ -29,7 +29,7 @@ There is little server-side state, so the attacker goes for:
 1. **Security headers on every HTML response**: HSTS, CSP with `frame-ancestors` and `object-src 'none'`, nosniff, Referrer-Policy, Permissions-Policy.
    Verify: fetch only the headers of the home page and of a missing page (`curl -sI` on each), then compare the two sets. Read the CSP or paste it into https://csp-evaluator.withgoogle.com.
 2. **Every third-party script inventoried, justified, and pinned or self-hosted.** No script from a domain you don't control without SRI or a strict CSP entry. Remove dead embeds (old analytics, chat, polyfill-type CDNs).
-   Verify: list every `<script src>` and dynamic loader host in the HTML and bundles; check external scripts carry `integrity=` and `crossorigin`; grep for `polyfill.io`, `bootcdn`, `bootcss`, `staticfile`.
+   Verify: list every external script tag and dynamic loader host in the HTML and bundles; check external scripts carry `integrity=` and `crossorigin`; grep for `polyfill.io`, `bootcdn`, `bootcss`, `staticfile`.
 3. **Contact and newsletter forms have server-side bot control and a rate limit.** Turnstile verified via siteverify; tokens are single-use and expire after 300 s; replays return `timeout-or-duplicate`; the widget alone does not protect.
    Verify: POST the form endpoint with no token and with a garbage token; expect 4xx and no email. 3-5 requests are enough. Send `\r\n` once in the name field to a test inbox you own and confirm no header injection.
 4. **No secrets in the client bundle; no `.env`, `.git` or source maps served.**
