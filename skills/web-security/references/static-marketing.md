@@ -27,7 +27,7 @@ There is little server-side state, so the attacker goes for:
 ### MUST
 
 1. **Security headers on every HTML response**: HSTS, CSP with `frame-ancestors` and `object-src 'none'`, nosniff, Referrer-Policy, Permissions-Policy.
-   Verify: `curl -sI https://site/` and `curl -sI https://site/does-not-exist`; diff the header sets. Read the CSP or paste it into https://csp-evaluator.withgoogle.com.
+   Verify: fetch only the headers of the home page and of a missing page (`curl -sI` on each), then compare the two sets. Read the CSP or paste it into https://csp-evaluator.withgoogle.com.
 2. **Every third-party script inventoried, justified, and pinned or self-hosted.** No script from a domain you don't control without SRI or a strict CSP entry. Remove dead embeds (old analytics, chat, polyfill-type CDNs).
    Verify: list every `<script src>` and dynamic loader host in the HTML and bundles; check external scripts carry `integrity=` and `crossorigin`; grep for `polyfill.io`, `bootcdn`, `bootcss`, `staticfile`.
 3. **Contact and newsletter forms have server-side bot control and a rate limit.** Turnstile verified via siteverify; tokens are single-use and expire after 300 s; replays return `timeout-or-duplicate`; the widget alone does not protect.

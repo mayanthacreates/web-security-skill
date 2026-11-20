@@ -40,7 +40,7 @@ When you review code, a config or a live site, you MUST output a single markdown
 | Critical | `GET /api/orders/{id}` returns any order to any logged-in user | Account A fetched account B's order 1043: 200 with B's address | Add `where: { id, userId: session.userId }`; return 404 when nothing matches | Logged in is not the same as allowed to see this record (IDOR, OWASP A01) |
 | High | Admin login has no throttle | 20 wrong passwords in 30 s, all 401, no delay or challenge | Turnstile on the form plus per-IP and per-account counter with lockout | With no throttle, password strength is the only wall |
 | High | JWT stored in `localStorage` | Read from source only, unverified on live | `__Host-` HttpOnly Secure cookie, SameSite=Lax | Any XSS becomes account takeover |
-| Medium | No CSP on HTML responses | `curl -sI /` shows no `content-security-policy` | Start with Report-Only, then enforce (see Headers) | Limits the blast radius of any missed XSS |
+| Medium | No CSP on HTML responses | The HTML response headers show no `content-security-policy` | Start with Report-Only, then enforce (see Headers) | Limits the blast radius of any missed XSS |
 
 Rules for the table:
 - **Severity:** Critical, High, Medium, Low or Info. Critical means data or accounts are reachable right now.

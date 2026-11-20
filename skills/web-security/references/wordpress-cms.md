@@ -40,7 +40,7 @@ WordPress core is comparatively well maintained. The risk sits in the plugin and
    Pass: 403 or 404, or a method list without `system.multicall` if XML-RPC is genuinely needed. A 200 with `system.multicall` fails.
 4. **XML-RPC disabled unless Jetpack or the mobile app needs it.** Verify: as above.
 5. **No username enumeration.**
-   Verify: `curl -s https://site/wp-json/wp/v2/users | head` and `curl -sI 'https://site/?author=1'`. Pass: 401, 403, 404 or empty. Fail: JSON with a `slug` equal to a login name. Block the users route for unauthenticated users only; blocking the whole REST API breaks the block editor. Make sure display names and author slugs aren't login names.
+   Verify: `curl -s https://site/wp-json/wp/v2/users` (read the start of the output) and `curl -sI 'https://site/?author=1'`. Pass: 401, 403, 404 or empty. Fail: JSON with a `slug` equal to a login name. Block the users route for unauthenticated users only; blocking the whole REST API breaks the block editor. Make sure display names and author slugs aren't login names.
 6. **Sensitive files not reachable**: `wp-config.php` and its backups (`.bak`, `.old`, `~`, `.zip`), `.git`, `.env`, `debug.log`, PHP files in uploads, DB dumps, `wp-content/ai1wm-backups`, `backup*.zip`.
    Verify: request each; expect 403 or 404, never 200 with content. `/wp-content/debug.log` and an open `/wp-content/uploads/` listing are the common hits.
 7. **PHP execution off in `/wp-content/uploads/`; permissions 644/755; `wp-config.php` 400/440; `DISALLOW_FILE_EDIT` true.**
